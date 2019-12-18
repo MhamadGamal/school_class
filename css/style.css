@@ -1,0 +1,139 @@
+*{
+    box-sizing: border-box
+}
+body{
+    padding: 0;
+    margin: 0;
+    font-family: 'Fredoka One', cursive;
+}
+img{
+    max-width: 100%
+}
+header{
+    padding: 5px 100px;
+    background-color: rgb(118, 23, 161);
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+header .logo{
+    flex: 0 0 30%;
+    max-width: 30%;
+    line-height: 1.8
+}
+header nav{
+    flex: 0 0 70%;
+    max-width: 70%;
+    line-height: 1.8
+}
+header .logo a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 40px;
+    display: inline-block;
+    font-family: 'Luckiest Guy', cursive;
+}
+header nav ul{
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    margin: 0;
+    padding: 5px 0;
+
+}
+header nav ul li:last-child{
+    margin-left:  30px
+}
+header nav ul li a{
+    display: inline-block;
+    color: #eee;
+    text-decoration: none;
+    line-height: 3.4
+}
+header nav ul li img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%
+}
+header nav ul li a span{
+    display: inline-block;
+}
+section{
+    padding: 20px 100px;
+    text-align: center;
+}
+section h2{
+    color: rgb(226, 43, 113);
+    font-size: 40px
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.row .std{
+    flex: 0 0 18%;
+    max-width: 20%;
+    margin: 20px 1%;
+    background-color: #a91f40;
+    color: #fff;
+    position: relative;
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, .3)  
+}
+.row .std img{
+    height: 200px;
+    width: 100%
+}
+.row .std .std-ev{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 40px;
+    background-color: #a91f40;
+    color: #fff;
+    line-height: 35px;
+    border-bottom-right-radius: 12px;
+    border-top-left-radius: 12px;
+}
+section button{
+    padding: 10px 20px ;
+    background-color: #a91f40;
+    color: #eee;
+    border: none;
+    box-shadow: 10px 5px 15px rgba(0, 0, 0, .3);
+    margin: 30px 0;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: 'Fredoka One', cursive;
+}
+.jsc{
+    justify-content: center !important
+}
+@media screen and (max-width: 1000px){
+    .row .std{
+        flex: 0 0 23%;
+        max-width: 23%;
+    }
+}
+@media screen and (max-width: 800px){
+    .row .std{
+        flex: 0 0 31.33333%;
+        max-width: 31.33333%;
+    }
+}
+@media screen and (max-width: 600px){
+    .row .std{
+        flex: 0 0 48%;
+        max-width: 48%;
+    }
+}
+@media screen and (max-width: 450px){
+    .row .std{
+        flex: 0 0 98%;
+        max-width: 98%;
+    }
+}

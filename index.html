@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Luckiest+Guy" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   
+    <!-- Start Navbar  -->
+    <header>
+        <div class="logo"><a href="#">MBA Schools</a></div> 
+        <nav class="user-info">
+            <ul>
+                <li><a href="#"><img src="students/user.jpg"></a></li>
+                <li><a href="#"><span>Mohamad Gamal</span></a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+            </ul>
+        </nav>       
+    </header>
+    <!-- End navbar -->
+
+    <!-- Start Class Section -->
+    <section>
+        <button id="addStd"> Add Student </button>
+        <h2>Class A</h2>
+        <div class="row">
+            
+           
+        </div>
+        <button onclick="get_std()">Get A Random Child</button>
+    </section>
+    <!-- End Class Section -->
+
+
+    <!-- Start Result Section -->
+    <section>   
+        <h2>Result</h2>
+        <div id="result" class="row jsc">
+
+        </div>
+    </section>
+    <!-- End Result Section -->
+    <script>
+
+    function Student( _name, _id, _img ) {
+        this.name = _name;
+        this.id = _id;
+        this.img = _img;
+        this.content =  function(){
+            return `
+            <div class="std" id="${this.id}">
+                        <div class="img-holder">
+                            <img src="students/00${this.img}.jpg">
+                        </div>
+                        <div class="info">
+                            <h3> ${ this.name } </h3>
+                        </div>
+                        <div class="std-ev">
+                            ${this.id}
+                        </div>
+                    </div>
+            `;
+        }       
+    }
+    
+
+    let stdsArr = [];
+    stdsArr.push( new Student( "mohammad", 111, 1 ) );
+    stdsArr.push( new Student( "Ahmed", 112, 2 ) );
+    stdsArr.push( new Student( "Ali", 113, 3 ) );
+    stdsArr.push( new Student( "mohammad", 114, 4 ) );
+    stdsArr.push( new Student( "mohammad", 115, 5 ) );
+    stdsArr.push( new Student( "mohammad", 116, 6 ) );
+    stdsArr.push( new Student( "menna", 117, 7 ) );
+    localStorage.setItem("StudentsData_OOP", JSON.stringify(stdsArr));
+    function  bindStudents () { 
+        let wrapper = '';
+        stdsArr.forEach( (student) => {
+            debugger;
+            wrapper += student.content();
+        })
+        return wrapper;
+     }
+
+
+    document.querySelector(".row").innerHTML = bindStudents()
+
+
+
+
+
+
+     // Add Student
+     document.getElementById("addStd").addEventListener("click", function(){
+        let data = prompt("please enter std data seperted  by comma ").split(",");
+        data.map( ( item, index ) =>  {
+            debugger;
+            if( index != 0 ){
+                Number(item)
+            }
+            return item
+        })        
+    stdsArr.push( new Student( ...data ) )
+    document.querySelector(".row").innerHTML = bindStudents()
+     });    
+
+
+
+
+        function get_std(){
+            var std_arr = document.getElementsByClassName('std');
+           
+            var rand_std = Math.floor(Math.random()*std_arr.length);
+            console.log(std_arr);
+            console.log(std_arr[rand_std]);
+            document.getElementById('result').innerHTML = std_arr[rand_std].outerHTML 
+        }
+    
+    
+        // students details
+        document.querySelector("section .row").addEventListener("click", function (e) { 
+            if(e.target.nodeName == "DIV" && e.target.classList[0] == "std-ev" ){
+                window.location.href = "details.html?id="+e.target.innerText;
+            };
+        });
+    </script>
+</body>
+</html>
